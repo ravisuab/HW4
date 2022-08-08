@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Edit "{{ employee['name'] }}" {% endblock %}</h1>
+    <form method="post">
+        <label for="name">Name</label>
+        <br>
+        <input type="text" name="name"
+               placeholder="Full Name"
+               value="{{ request.form['name'] or employee['name'] }}"></input>
+        <br>
+
+        <label for="company_name">Company Name</label>
+        <br>
+        <input type="text" name="company_name"
+               placeholder="Company Name"
+               value="{{ request.form['company_name'] or employee['company_name'] }}"></input>
+        <br>
+
+        <label for="email">Email</label>
+        <br>
+        <input type="email" name="email"
+               placeholder="Email"
+               value="{{ request.form['email'] or employee['email'] }}"></input>
+        <br>
+
+        <label for="mobile">Mobile</label>
+        <br>
+        <input type="tel" name="mobile"
+               placeholder="Mobile"
+               value="{{ request.form['mobile'] or employee['mobile'] }}"></input>
+        <br>
+
+        <label for="address">Address</label>
+        <br>
+        <textarea name="address"
+               placeholder="Address"
+               rows="5"
+               columns="60">{{ request.form['address'] or employee['address'] }}</textarea>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Employees {% endblock %}</h1>
+    {% for employee in employees %}
+        <div class='employee-display'>
+            <div class="employee-list-item">
+                <h2>{{ employee['name'] }}</h2>                        
+                <form action="{{ url_for('delete_employee', id=employee['id']) }}" method="POST">
+                    <button>Delete</button>
+                </form>
+                <form action="{{ url_for('nav_to_edit_employee', id=employee['id']) }}">
+                    <button class="edit-button">Edit</button>
+                </form>
+            </div>
+            <p>{{ employee['id'] }}</p>
+            <p>{{ employee['company_name'] }}</p>            
+            <p>{{ employee['email'] }}</p>
+            <p>{{ employee['mobile'] }}</p>
+            <p>{{ employee['address'] }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

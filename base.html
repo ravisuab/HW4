@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}- FlaskApp</title>
+    <style>
+        .employee-display {
+            padding: 10px;
+            margin: 5px;
+            background-color: #f3f3f3
+        }
+        .header-bar {            
+            border-bottom: 2px solid midnightblue;
+            display: flow-root;
+        }
+        .header-bar h3 {
+            float: left;
+            margin: 0px;
+        }
+        .header-bar input {
+            float: right;
+        }
+        .header-bar button {
+            margin-left: 4px;
+            float: right;
+        }
+        .employee-list-item {
+            /* border-bottom: 2px solid midnightblue; */
+            display: flow-root;
+        }
+        .employee-list-item h2 {
+            float: left;
+        }
+        .employee-list-item button {
+            float: right;
+        }
+        .form-input input {
+            margin-bottom: 5px;
+        }
+        .form-input textarea {
+            margin-bottom: 5px;
+        }
+        .edit-button {
+            margin-right: 5px;
+        }
+        strong {
+            color: red;
+        }
+    </style>
+    <script type="text/javascript">
+        function filterData(oEvent){            
+            const sMobile = document.getElementById('searchInput').value;
+            location.href = location.origin + '/search?mobile=' + sMobile;
+        }
+    </script>
+</head>
+<body>
+    <div class="header-bar">
+        <h3>Employee Maintenance</h3>
+        <form action="{{ url_for('nav_to_create_employee') }}">
+            <button>Create</button>
+        </form>        
+        <form action="{{ url_for('nav_to_display_employees') }}">
+            <button>Display</button>
+        </form>                
+        <form>
+            <input id="searchInput" placeholder="Mobile Number" onchange="filterData()" value=""></input>
+        </form>
+    </div>
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
+</body>
+</html>

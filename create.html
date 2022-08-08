@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} New Employee {% endblock %}</h1>
+    {% if error %}
+       <p class=error><strong>Error:</strong> {{ error }}
+    {% endif %}
+    <form class="form-input" method="post">
+        <label for="name">Name</label>
+        <br>
+        <input type="text" name="name"
+               placeholder="Full Name"
+               value="{{ request.form['name'] }}"></input>
+        <br>
+
+        <label for="company_name">Company Name</label>
+        <br>
+        <input type="text" name="company_name"
+               placeholder="Company Name"
+               value="{{ request.form['company_name'] }}"></input>
+        <br>
+
+        <label for="email">Email</label>
+        <br>
+        <input type="email" name="email"
+               placeholder="Email"
+               value="{{ request.form['email'] }}"></input>
+        <br>
+
+        <label for="mobile">Mobile</label>
+        <br>
+        <input type="tel" name="mobile"
+               placeholder="Mobile"
+               value="{{ request.form['mobile'] }}"></input>
+        <br>
+
+        <label for="address">Address</label>
+        <br>
+        <textarea name="address"
+               placeholder="Address"
+               rows="5"
+               columns="60">{{ request.form['address']}}</textarea>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}
